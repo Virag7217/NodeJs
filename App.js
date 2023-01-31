@@ -1,16 +1,17 @@
 const path = require('path');
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 
-const adminroutes = require('./routes/admin');
+app.set('view engine', 'pug');
+app.set('views', 'views')
+
+const admindata = require('./routes/admin');
 const shoproutes = require('./routes/shop');
 
-
-
-const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
-app.use('/admin',adminroutes);
+app.use('/admin',admindata.routes);
 app.use(shoproutes);
 
 app.use((req,res,next) => {
@@ -18,5 +19,7 @@ app.use((req,res,next) => {
 });
 
 
-
-app.listen(3003);
+const port = 3003
+app.listen(port , () =>{
+    console.log(`server is running. Port = ${port} `);
+});
