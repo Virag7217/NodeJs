@@ -9,18 +9,17 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views')
 
-const admindata = require('./routes/admin');
+const adminroutes = require('./routes/admin');
 const shoproutes = require('./routes/shop');
+const errorController = require('./controllers/error');
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
-app.use('/admin',admindata.routes);
+app.use('/admin',adminroutes);
 app.use(shoproutes);
 
-app.use((req,res,next) => {
-    res.status(404).render('404',{pageTitle: 'Page Not Found'});
-    // res.status(404).sendFile(path.join(__dirname,  'views', '404.html'));
-});
+app.use(errorController.get404);
 
 
 const port = 3003
