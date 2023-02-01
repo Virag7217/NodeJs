@@ -23,3 +23,7 @@
 .product__description {
     text-align: center;
 }
+
+article{
+    border-radius: 23px;
+}
