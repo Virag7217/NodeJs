@@ -39,7 +39,6 @@ exports.getIndex = (req, res, next) => {
       }); 
     })
     .catch(err => console.log(err)); 
-  
 };
 
 exports.getCart = (req, res, next) => {
