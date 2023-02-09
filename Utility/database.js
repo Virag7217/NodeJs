@@ -1,18 +1,14 @@
-// const mysql = require('mysql2');
-// const pool = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     database: 'node',
-//     password: 'Sea_Flux'
-// });
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
 
-// module.exports = pool.promise();
+const mongoConnect = (callback) => {
+    
+    MongoClient.connect('mongodb+srv://virag:mongodbforvirag7217@node.fq8v4eo.mongodb.net/?retryWrites=true&w=majority')
+        .then(client => {
+            console.log('Connected !!');
+            callback(client);
+        })
+        .catch(err => console.log(err));
+        };
 
-const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize('node', 'root', 'Sea_Flux' , {
-    dialect: 'mysql',
-    host: 'localhost'
-});
-
-module.exports = sequelize;
+module.exports = mongoConnect ; 
