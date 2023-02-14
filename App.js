@@ -37,13 +37,19 @@ mongoose.connect('mongodb+srv://virag:mongodbforvirag7217@node.fq8v4eo.mongodb.n
         if(!user){
 
           const user = new User({
-            name: 'virag',
-            email:'virag@test.com',
+            name: 'asdfmanskdfm',
+            email:'adshfjkas@test.com',
             cart:{
               items: []
             }
           });
-          user.save();
+          user.save()
+            .then(r => {
+              console.log(r);
+            })
+            .catch(err => {
+              console.log(err);
+            })
         }
       });
       const port = 3003

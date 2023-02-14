@@ -1,4 +1,5 @@
 const Product  = require('../models/product');
+const user = require('../models/user');
 
 
 
@@ -10,27 +11,37 @@ exports.getAddProduct = (req, res, next) => {
   };
 
 exports.postAddProduct = (req, res, next) => {
-    const title = req.body.title;
-    const imageUrl = req.body.imageUrl;
-    const description = req.body.description ;
-    const price = req.body.price;
-    const product = new Product({
-      title: title,
-      price: price,
-      description: description,
-      imageUrl: imageUrl
-    })
-    product
-    .save()
-    .then(result => {
-      // console.log(result);
-      console.log("Product added");
-      
-      res.redirect('/admin/products');
+  const userIdArr = []
+
+  const userId = user.findOne({email : "virag@test.com"})
+    .then(r => {
+      const title = req.body.title;
+      const imageUrl = req.body.imageUrl;
+      const description = req.body.description ;
+      const price = req.body.price;
+      const product = new Product({
+        title: title,
+        price: price,
+        description: description,
+        imageUrl: imageUrl,
+        userId: r._id
+      })
+      product
+      .save()
+      .then(result => {
+        // console.log(result);
+        console.log("Product added");
+        
+        res.redirect('/admin/products');
+      })
+      .catch(err => {
+        console.log(err);
+      });
     })
     .catch(err => {
       console.log(err);
-    });
+    })
+
 };
 
 exports.getEditProduct = (req, res, next) => {  
