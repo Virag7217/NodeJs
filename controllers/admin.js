@@ -11,10 +11,6 @@ exports.getAddProduct = (req, res, next) => {
   };
 
 exports.postAddProduct = (req, res, next) => {
-  const userIdArr = []
-
-  const userId = user.findOne({email : "virag@test.com"})
-    .then(r => {
       const title = req.body.title;
       const imageUrl = req.body.imageUrl;
       const description = req.body.description ;
@@ -24,7 +20,7 @@ exports.postAddProduct = (req, res, next) => {
         price: price,
         description: description,
         imageUrl: imageUrl,
-        userId: r._id
+        userId: req.user
       })
       product
       .save()
@@ -37,11 +33,6 @@ exports.postAddProduct = (req, res, next) => {
       .catch(err => {
         console.log(err);
       });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-
 };
 
 exports.getEditProduct = (req, res, next) => {  

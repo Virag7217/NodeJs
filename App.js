@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 
 app.use((req, res, next) => {
-    User.findById('63eb3b816dae31c739450e7d')
+    User.findById('63ec6b8dd50f22bbe3482fec')
       .then(user => {
         req.user = user;
         next();
@@ -37,19 +37,13 @@ mongoose.connect('mongodb+srv://virag:mongodbforvirag7217@node.fq8v4eo.mongodb.n
         if(!user){
 
           const user = new User({
-            name: 'asdfmanskdfm',
-            email:'adshfjkas@test.com',
+            name: 'virag',
+            email:'virag@test.com',
             cart:{
               items: []
             }
           });
           user.save()
-            .then(r => {
-              console.log(r);
-            })
-            .catch(err => {
-              console.log(err);
-            })
         }
       });
       const port = 3003
