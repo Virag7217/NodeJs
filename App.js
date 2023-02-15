@@ -31,6 +31,7 @@ app.use(shoproutes);
 
 app.use(errorController.get404);
 
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb+srv://virag:mongodbforvirag7217@node.fq8v4eo.mongodb.net/shop?retryWrites=true&w=majority')
     .then(result => {
       User.findOne().then(user => {
