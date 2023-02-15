@@ -1,5 +1,5 @@
 const Product  = require('../models/product');
-const user = require('../models/user');
+const User = require('../models/user');
 
 
 
@@ -50,7 +50,8 @@ exports.getEditProduct = (req, res, next) => {
         pageTitle: 'Edit Product',
         path: '/admin/edit-product',
         editing: editMode,
-        product: product
+        product: product,
+        isAuthenticated : req.session.isLoggedIn
       });
     })
     .catch(err => console.log(err));
@@ -96,6 +97,7 @@ exports.getProducts = (req,res,next) => {
         prods: products,
         pageTitle: 'Admin Products',
         path: '/admin/products',
+        isAuthenticated : req.session.isLoggedIn
       });
     }).catch(err => console.log(err)
     );
