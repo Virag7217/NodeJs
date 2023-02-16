@@ -11,11 +11,11 @@ const MONGODB_URI = 'mongodb+srv://virag:mongodbforvirag7217@node.fq8v4eo.mongod
 
 
 const app = express();
+
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection:'sessions'
 });
-
 
 app.set('view engine', 'ejs');
 app.set('views', 'views')
