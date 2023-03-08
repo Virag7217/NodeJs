@@ -1,0 +1,8 @@
+{
+    "env":{
+        "MONGO_USER": "virag",
+        "MONGO_PASSWORD": "mongodbforvirag7217",
+        "MONGO_DEFAULT_DATABASE": "shop",
+        "STRIPE_KEY": "sk_test_51MgRSBSJP7Sh8aWxjAJ69NMMzwEqtDE4StuMqkTmSpJm1C8LXLUqHyh7HwSSMtY0YqQIwgArwvJiwImy7oipm7ru00C3UKiHe1"
+    }
+}
